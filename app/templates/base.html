@@ -1,0 +1,70 @@
+<html>
+<head>
+    <title>Graphs | flask app</title>
+
+    <link rel="stylesheet" href="static/assets/css/bootstrap.min.css" type="text/css">
+    <script src="//d3js.org/d3.v3.min.js"></script>
+</head>
+<body>
+<style>
+    .logo{
+        position: relative;
+        top:-12px;
+        height:45px;
+    }
+</style>
+<div class="container">
+    <!-- Static navbar -->
+    <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">D3 and Matplotlib Playground</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="/index">Home</a></li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div><!--/.container-fluid -->
+    </nav>
+
+    <div class="row">
+        <div class="col-md-3">
+            <h1>Graphs</h1><hr>
+
+            <h3>d3.js</h3>
+
+            <ul class="graph-menu d3">
+                {% for graph in graphs %}
+                    {% for d3 in graph.d3 %}
+                        <li><a href="{{ d3.link }}">{{ d3.link.lstrip('/') }}</a></li>
+                    {% endfor %}
+                {% endfor %}
+            </ul>
+
+            <h3>matplotlib</h3>
+
+            <ul class="graph-menu mpl">
+                {% for graph in graphs %}
+                    {% for mpl in graph.mpl %}
+                        <li><a href="{{ mpl.link }}">{{ mpl.link.lstrip('/') }}</a></li>
+                    {% endfor %}
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="main-content col-md-7">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+</div>
+<script src="static/assets/js/jquery-1.12.4.min.js"></script>
+<script src="static/assets/js/bootstrap.min.js"></script>
+</body>
+</html>

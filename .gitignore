@@ -1,0 +1,12 @@
+.idea/
+.vagrant/
+.cache/
+.config/
+node_modules/
+.pip/
+__pycache__
+.viminfo
+.DS_Store
+.bash_history
+*.box
+*.pyc
